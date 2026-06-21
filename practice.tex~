@@ -14,6 +14,12 @@
 \usepackage{xcolor}
 %symbols
 \usepackage{amssymb}
+%hyperlink
+\usepackage{hyperref}
+%auto fig numbering
+\usepackage{cleveref}
+%micro mod
+\usepackage{microtype}
 
 %code view setting
 \lstset{

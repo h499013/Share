@@ -178,6 +178,8 @@ Reference~\cite{kalman1960general}
     \draw[->] (ctrl) -- (plant);
     \draw[->] (plant) -- (output);
     %feedback
+    %-| horizon to vertical
+    %|- vertical to horizon
     \draw[->] (plant.south) -- ++(0,-1) -| (sum.south);
 \end{tikzpicture}
 \caption{caption}
