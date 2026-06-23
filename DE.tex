@@ -1,0 +1,162 @@
+\documentclass[10pt]{article}
+
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+\begin{document}
+
+\begin{center}
+{Differential Equation}
+\end{center}
+
+\section{First-Order Linear Systems}
+
+Higher-order $\to$ first-order system.
+For $y^{(n)}=F(t,y,y',\dots,y^{(n-1)})$, let $x_1=y,\ x_2=y',\dots,x_n=y^{(n-1)}$:
+\[
+x_1'=x_2,\quad x_2'=x_3,\quad\dots,\quad x_n'=F(t,x_1,\dots,x_n).
+\]
+
+
+$\mathbf{x},\mathbf{g}$: vectors, $P$: $n\times n$ matrix:
+\[
+\mathbf{x}' = P(t)\,\mathbf{x} + \mathbf{g}(t).
+\]
+
+
+homogeneous system $\mathbf{x}'=P(t)\mathbf{x}$
+\[
+\mathbf{x}(t)=c_1\mathbf{x}^{(1)}(t)+\cdots+c_n\mathbf{x}^{(n)}(t).
+\]
+Abel's theorem: $W=c\,\exp\!\big(\!\int (p_{11}+\cdots+p_{nn})\,dt\big)$ 
+
+
+Transpose $A^T=(a_{ji})$, conjugate $\bar A=(\overline{a_{ij}})$, adjoint $A^*=\bar A^{T}$. Product
+$AB=C,\ c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}$, with $AB\neq BA$ in general.
+
+Using cofactors $C_{ij}=(-1)^{i+j}M_{ij}$ ($M_{ij}$: minor). If $\det A\neq 0$, then $A$ is nonsingular and $A^{-1}A=AA^{-1}=I$.
+
+
+For the matrix $X$ whose columns are the vectors,
+\[
+X\mathbf{c}=\mathbf{0}\ \text{has only the trivial solution} \iff \det X\neq 0 \iff \text{linearly independent}.
+\]
+
+Vectors mapped to a multiple of themselves:
+\[
+A\mathbf{x}=\lambda\mathbf{x}\ \Longleftrightarrow\ (A-\lambda I)\mathbf{x}=\mathbf{0},\qquad
+\det(A-\lambda I)=0\ \text{(characteristic equation)}.
+\]
+
+Real, opposite signs: saddle point.
+Real, same sign (distinct): stable / unstable node.
+Complex $r=\lambda\pm i\mu$ (nonzero real part): spiral point. Real solutions are
+\[
+\mathbf{u}(t)=\mathrm{Re}(\boldsymbol{\xi}e^{rt}),\quad \mathbf{v}(t)=\mathrm{Im}(\boldsymbol{\xi}e^{rt}),\quad \boldsymbol{\xi}=\mathbf{a}+i\mathbf{b}.
+\]
+Purely imaginary ($\lambda=0$) gives a center (periodic oscillation).
+
+Repeated eigenvalue (defective, $q<m$). If a double root $\rho$ has only one eigenvector, build the second solution with a generalized eigenvector $\boldsymbol{\eta}$:
+\[
+\mathbf{x}^{(1)}=\boldsymbol{\xi}e^{\rho t},\qquad
+\mathbf{x}^{(2)}=\boldsymbol{\xi}\,t\,e^{\rho t}+\boldsymbol{\eta}\,e^{\rho t},\quad (A-\rho I)\boldsymbol{\eta}=\boldsymbol{\xi}.
+\]
+The origin is then an improper node.
+
+
+Fundamental matrix: $\Psi(t)=\big[\mathbf{x}^{(1)}(t)\,|\,\cdots\,|\,\mathbf{x}^{(n)}(t)\big]$ is nonsingular and satisfies $\Psi'=P(t)\Psi$.
+\[
+\mathbf{x}=\Psi(t)\Psi^{-1}(t_0)\mathbf{x}^0.
+\]
+
+$\Phi(t)=\exp(At)$ with $\Phi(0)=I$
+$\mathbf{x}=\Phi(t)\mathbf{x}^0$
+\[
+\exp(At)=I+\sum_{n=1}^{\infty}\frac{A^n t^n}{n!},\qquad
+\frac{d}{dt}\exp(At)=A\exp(At).
+\]
+Diagonalization
+\[
+T^{-1}AT=D=\mathrm{diag}(\lambda_1,\dots,\lambda_n).
+\]
+
+\section{Nonhomogeneous Systems $\mathbf{x}'=P(t)\mathbf{x}+\mathbf{g}(t)$}
+
+General solution = (homogeneous general solution) + (particular solution $\mathbf{v}(t)$)
+
+$\mathbf{x}=T\mathbf{y} \to \mathbf{y}'=D\mathbf{y}+\mathbf{h}(t), \mathbf{h}=T^{-1}\mathbf{g} \to y_j'=r_j y_j+h_j$
+if $e^{\lambda t}$ in $\mathbf{g}$ coincides with an eigenvalue, assume $\mathbf{a}\,t e^{\lambda t}+\mathbf{b}\,e^{\lambda t}$.
+$\mathbf{x}=\Psi(t)\mathbf{u}(t)$ for the general case:
+\[
+\mathbf{x}=\Phi(t)\mathbf{x}^0+\Phi(t)\!\int_{t_0}^{t}\!\Phi^{-1}(s)\mathbf{g}(s)\,ds.
+\]
+$\mathcal{L}\{\mathbf{x}'\}=sX(s)-\mathbf{x}(0)$
+
+\section{Fourier}
+
+\[
+f(x)=\frac{a_0}{2}+\sum_{m=1}^{\infty}\Big(a_m\cos\frac{m\pi x}{L}+b_m\sin\frac{m\pi x}{L}\Big).
+\]
+orthogonality: ($\int_{-L}^{L}\cos\frac{m\pi x}{L}\cos\frac{n\pi x}{L}dx=0\,(m\neq n),\ =L\,(m=n)$, etc.)
+\[
+a_n=\frac{1}{L}\!\int_{-L}^{L}\! f(x)\cos\frac{n\pi x}{L}\,dx,\qquad
+b_n=\frac{1}{L}\!\int_{-L}^{L}\! f(x)\sin\frac{n\pi x}{L}\,dx.
+\]
+If $f$ is even, $b_n=0$ (cosine series); if odd, $a_n=0$ (sine series).
+
+\clearpage
+
+\section{State-Space Representation}
+\[
+\dot{\mathbf{x}}=A\mathbf{x}+B\mathbf{u},\qquad \mathbf{y}=C\mathbf{x}+D\mathbf{u}.
+\]
+$\mathbf{x}$: state, $\mathbf{u}$: input, $\mathbf{y}$: output. 
+The response is given by the state-transition matrix $e^{At}$:
+\[
+\mathbf{x}(t)=e^{A(t-t_0)}\mathbf{x}(t_0)+\int_{t_0}^{t}e^{A(t-\tau)}B\mathbf{u}(\tau)\,d\tau.
+\]
+
+\section{Eigenvalues and Stability}
+The eigenvalues $\lambda_i$ of $A$ are the system poles. A continuous-time system is
+\[
+\text{asymptotically stable} \iff \mathrm{Re}(\lambda_i)<0\ \text{for all } i.
+\]
+
+\section{Controllability and Observability}
+\[
+\mathcal{C}=\big[\,B\ \ AB\ \ A^2B\ \cdots\ A^{n-1}B\,\big],\qquad
+\mathcal{O}=\begin{bmatrix} C\\ CA\\ \vdots\\ CA^{n-1}\end{bmatrix}.
+\]
+$\mathrm{rank}\,\mathcal{C}=n$ $\Rightarrow$ controllable; $\mathrm{rank}\,\mathcal{O}=n$ $\Rightarrow$ observable.
+Rank of a matrix is the maximum number of linearly independent rows (or columns).
+
+\section{Lyapunov Equation and LQR}
+Lyapunov equation (given $Q\succ0$, find $P\succ0$):
+\[
+    A^{T}P+PA=-Q.
+\]
+$Q\succ0 \equiv x^{T}Qx > 0      \forall x \neq 0$
+
+LQR:
+\[
+A^TP+PA-PBR^{-1}B^TP+Q=0,\qquad K=R^{-1}B^TP,\quad \mathbf{u}=-K\mathbf{x}.
+\]
+
+\section{Rotation and Homogeneous Transformation Matrices}
+rotation matrix $R\in SO(3)$:
+\[
+R^TR=I,\qquad \det R=1.
+\]
+homogeneous transformation $T\in SE(3)$:
+\[
+T=\begin{bmatrix} R & \mathbf{p}\\ \mathbf{0}^T & 1\end{bmatrix},\qquad
+T^{-1}=\begin{bmatrix} R^T & -R^T\mathbf{p}\\ \mathbf{0}^T & 1\end{bmatrix}.
+\]
+
+A chain of frames: $T_0^n=T_0^1 T_1^2\cdots T_{n-1}^n$.
+
+\end{document}
